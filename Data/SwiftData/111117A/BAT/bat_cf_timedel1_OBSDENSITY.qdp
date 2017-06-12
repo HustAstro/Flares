@@ -1,0 +1,4 @@
+READ TERR 1 2
+!Time	Poserr	Negerr	ConFact	PosErr	NegErr
+!BAT Counts-to-flux-density conversion factors
+0.532400012016296	0.5	-0.5	0.00233594730524173	7.38032100222146e-05	-0.000214483681556158

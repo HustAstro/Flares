@@ -1,0 +1,4 @@
+READ TERR 1 2
+!Time	Poserr	Negerr	ConFact	PosErr	NegErr
+!BAT Counts-to-flux conversion factors
+!#0.532400012016296	0.5	-0.5	3.40733964081162e-08	2.54030918622386e+19	-2.4367401289226e-08
