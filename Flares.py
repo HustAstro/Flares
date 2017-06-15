@@ -1,26 +1,22 @@
-#coding=utf-8
+# coding=utf-8
 import Bin.DataDownload
 import Bin.AnalysisSwift
 import Config
 import os
 
+
 def main():
-##################################
-    Directory = Config.Set_Directory()
-    DownloadType = ['Update','Complete','No']
-    Bin.DataDownload.SwiftXRT(Directory,DownloadType[2])
-###################################
+    directory = Config.SetDirectory()
+    download_type = ['Update', 'Complete', 'No']
+    Bin.DataDownload.SwiftXRT(directory, download_type[2])
 
-###################################    
-    DirTemp = os.path.join(Directory.DirSwiftData,'111209A')
-##    DirTemp = os.path.join(Directory.DirSwiftData,'130427A')
-##    DirTemp = os.path.join(Directory.DirSwiftData,'070110')
-    Test = Bin.AnalysisSwift.AnalysisXRT(DirTemp)
-    Test.PresetPipelineA()
-###################################    
+    dir_temp = os.path.join(directory.DirSwiftData, '111209A')
+#    dir_temp = os.path.join(directory.DirSwiftData,'130427A')
+#    dir_temp = os.path.join(directory.DirSwiftData,'070110')
+    test = Bin.AnalysisSwift.AnalysisXRT(dir_temp)
+    test.preset_pipeline_a()
 
-
-    Test.DataBaseKeysList()
+#    Test.DataBaseKeysList()
     print 'Done!'    
     return
 if __name__ == '__main__':
