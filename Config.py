@@ -1,45 +1,47 @@
 import os
 
-class Set_Directory():
-    def __init__(self):
-## Data File
-        self.DirCurrent = os.getcwd()
-        self.DirBin = self.DirMake('Bin')
-        self.DirData = self.DirMake('Data')
-        self.DirTemp = self.DirMake('Temp')
-        self.DirSwiftData = self.DirMake('SwiftData',self.DirData)
-        self.FileSwiftTable = os.path.join(self.DirData,'grb_table.txt')
 
+class SetDirectory:
+    def __init__(self):
+        # Data File
+        self.DirCurrent = os.getcwd()
+        self.DirBin = self.dir_make('Bin')
+        self.DirData = self.dir_make('Data')
+        self.DirTemp = self.dir_make('Temp')
+        self.DirSwiftData = self.dir_make('SwiftData', self.DirData)
+        self.FileSwiftTable = os.path.join(self.DirData, 'grb_table.txt')
         
-        self.Temp_File_List = self.ErgodicFolder(self.DirTemp)
-        self.TempClean(self.Temp_File_List)
+        self.TempFileList = self.ergodic_folder(self.DirTemp)
+        self.temp_clean(self.TempFileList)
         return
 
-    def DirMake(self,DirName,DirPath=None):
-        if DirPath == None:
-            DirPath = self.DirCurrent
-        DirNeed = os.path.join(DirPath,DirName)
-        if os.path.exists(DirNeed):
+    def dir_make(self, dir_name, dir_path=None):
+        if dir_path is None:
+            dir_path = self.DirCurrent
+        dir_need = os.path.join(dir_path, dir_name)
+        if os.path.exists(dir_need):
             pass
         else:
-            os.makedirs(DirNeed)
-        return DirNeed
+            os.makedirs(dir_need)
+        return dir_need
 
-    def DirClean(self,Dir):
-        File_List = self.ErgodicFolder(Dir)
-        self.TempClean(File_List)
-##        print 'Delete the folder \'Data\' by yourself, have a nice day.'
+    def dir_clean(self, dir_cleaned):
+        file_list = self.ergodic_folder(dir_cleaned)
+        self.temp_clean(file_list)
+        # print "Delete the folder \'Data\' by yourself, have a nice day."
         return
-    
-    def ErgodicFolder(self,Directory):
-        File_List = []
-        for root, dirs, files in os.walk(Directory):
-            for File in files:
-                File_List.append(os.path.join(root,File))
-        return File_List
 
-    def TempClean(self,Temp_File_List):
+    @staticmethod
+    def ergodic_folder(directory):
+        file_list = []
+        for root, dirs, files in os.walk(directory):
+            for single_file in files:
+                file_list.append(os.path.join(root, single_file))
+        return file_list
+
+    @staticmethod
+    def temp_clean(temp_file_list):
         import os
-        for Item in Temp_File_List:
-            os.remove(Item)
+        for item in temp_file_list:
+            os.remove(item)
         return
